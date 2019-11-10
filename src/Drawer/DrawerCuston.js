@@ -6,7 +6,7 @@ import { Icon } from 'react-native-elements'
 import Header from './HeaderDrawer'
 
 class SideMenu extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       menu: false
@@ -22,32 +22,32 @@ class SideMenu extends Component {
   }
 
   screnn = (route) => {
-    if(route === 'Screen1'){
-      this.setState({menu: false})
-    }else{
-      this.setState({menu: true})
+    if (route === 'Screen1') {
+      this.setState({ menu: false })
+    } else {
+      this.setState({ menu: true })
     }
   }
 
   render() {
     return (
-      <View >
+      <React.Fragment>
+        <Header />
         <ScrollView>
-          <Header />
-          <TouchableOpacity 
+          <TouchableOpacity
             style={this.state.menu ? styles.view_accessed : styles.view_no_accessed}
             onPress={this.navigateToScreen('Screen1')}>
             <Icon name='home' color='#000' size={30} />
-            <Text  style={styles.text} > Home </Text>
+            <Text style={styles.text} > Home </Text>
           </TouchableOpacity>
-          <TouchableOpacity 
-            style={this.state.menu ? styles.view_no_accessed : styles.view_accessed} 
+          <TouchableOpacity
+            style={this.state.menu ? styles.view_no_accessed : styles.view_accessed}
             onPress={this.navigateToScreen('Screen2')}>
             <Icon name='code' color='#000' size={30} />
-            <Text  style={styles.text}> Criptografia </Text>
+            <Text style={styles.text}> Criptografia </Text>
           </TouchableOpacity>
         </ScrollView>
-      </View>
+      </React.Fragment>
     );
   }
 }
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderStyle: 'solid',
     backgroundColor: '#d3d3d3'
-  }
+  },
 });
 
 

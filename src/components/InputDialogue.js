@@ -5,15 +5,15 @@ export default props =>
     <TextInput
         multiline
         placeholder={props.name}
-        value={props.texto}
-        onChangeText={props.chamar}
+        onChangeText={props.receive}
+        value={props.text}
         maxLength={128}
-        style={styles.chave} />
+        style={styles.key} />
 
 
 
 const styles = StyleSheet.create({
-    chave: {
+    key: {
         backgroundColor: '#001f3f',
         borderRadius: 5,
         color: '#fff',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         padding: 5,
         margin: 3,
         height: 25,
-        width: 220,
+        width: 250,
     }
 
 })

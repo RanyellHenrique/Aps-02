@@ -1,28 +1,25 @@
 import * as React from 'react'
-import { Text, View, StyleSheet, KeyboardAvoidingView, ProgressBarAndroid, Alert } from 'react-native'
+import { View, KeyboardAvoidingView, Alert } from 'react-native'
 import CryptoJS from "react-native-crypto-js"
 import { ScrollView } from 'react-native-gesture-handler'
 
-import  Styles from '../styles/Styles'
-
+import Styles from '../styles/Styles'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import Input from '../components/Input'
-import ButtonDialogo from '../components/ButtonDialogo'
-import InputDialogo from '../components/InputDialogo'
-import Dialogue from '../components/Dialogo'
+import ButtonDialogue from '../components/ButtonDialogue'
+import InputDialogue from '../components/InputDialogue'
+import Dialogue from '../components/Dialogue'
 import Progress from '../components/Progress'
-
-
 
 export default class AssetExample extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      texto_normal: '',
-      chave: '',
-      texto_criptografado: '',
-      chave_descriptografada: '',
+      text_normal: '',
+      password: '',
+      text_decrypted: '',
+      password_decrypted: '',
       list: [],
       index: '',
       progress: 0,
@@ -30,39 +27,56 @@ export default class AssetExample extends React.Component {
     }
   }
 
-  criptografia = () => {
-    if (this.state.texto_normal === '' || this.state.chave === '') {
+  cryptography = () => {
+    if (this.state.text_normal === '' || this.state.password === '') {
       Alert.alert('Digite o texto e a chave!!')
     } else {
-      let ciphertext = CryptoJS.AES.encrypt(this.state.texto_normal, this.state.chave).toString()
+      let ciphertext = CryptoJS.AES.encrypt(this.state.text_normal, this.state.password).toString()
       this.state.list.push({ text: ciphertext, user: '1', show: false })
-      this.setState({ list: this.state.list, texto_normal: '', chave: '', progress: 0 })
+      this.setState({ list: this.state.list, text_normal: '', password: '', progress: 0 })
     }
   }
 
-  entrada_texto = texto => {
-    let value = texto.length / 128
-    this.setState({ texto_normal: texto, progress: value })
-
-  }
-
-  entrada_chave = texto => {
-    this.setState({ chave: texto })
-  }
-
-  chave_descriptografia = texto => {
-    this.setState({ chave_descriptografada: texto })
-  }
-
-  acionar_chave = (texto, key) => {
-    let textos = this.state.list
-    this.setState({ texto_criptografado: texto.text, index: key })
-    if (texto.show == true) {
-      textos[key].show = false
-      this.setState({ lista: textos })
+  decryption = () => {
+    if (this.state.password_decrypted !== '') {
+      let texts = this.state.list
+      let bytes = CryptoJS.AES.decrypt(this.state.text_decrypted, this.state.password_decrypted)
+      let originalText = bytes.toString(CryptoJS.enc.Utf8)
+      if (originalText !== '') {
+        texts[this.state.index].text = originalText
+        texts[this.state.index].show = false
+        this.setState({ list: texts, password_decrypted: '' })
+      } else {
+        Alert.alert('Chave Errada!!')
+      }
     } else {
-      textos[key].show = true
-      this.setState({ lista: textos })
+      Alert.alert('Digite a Chave!!')
+    }
+  }
+
+  text_input = text => {
+    let value = text.length / 128
+    this.setState({ text_normal: text, progress: value })
+
+  }
+
+  password_input = text => {
+    this.setState({ password: text })
+  }
+
+  password_decryption = text => {
+    this.setState({ password_decrypted: text })
+  }
+
+  password_activation = (text, key) => {
+    let texts = this.state.list
+    this.setState({ text_decrypted: text.text, index: key })
+    if (text.show == true) {
+      texts[key].show = false
+      this.setState({ lista: texts })
+    } else {
+      texts[key].show = true
+      this.setState({ lista: texts })
     }
     let shows = this.state.list.filter(list => list.show === true)
     if (shows.length > 0) {
@@ -73,17 +87,7 @@ export default class AssetExample extends React.Component {
 
   }
 
-  descriptografia = () => {
-    let textos = this.state.list
-    let bytes = CryptoJS.AES.decrypt(this.state.texto_criptografado, this.state.chave_descriptografada)
-    let originalText = bytes.toString(CryptoJS.enc.Utf8)
-    if (originalText !== '') {
-      textos[this.state.index].text = originalText
-      this.setState({ lista: textos })
-    }else{
-      Alert.alert('Chave Errada!!')
-    }
-  }
+
 
   render() {
     return (
@@ -96,21 +100,21 @@ export default class AssetExample extends React.Component {
               <Dialogue
                 value={item.text}
                 choose={item.show}
-                chamar={this.acionar_chave.bind(this, item, key)} />
+                chamar={this.password_activation.bind(this, item, key)} />
               {item.show ? (
                 <KeyboardAvoidingView style={Styles.bottonInput} behavior="padding" enabled>
-                  <InputDialogo chamar={this.chave_descriptografia} name='chave' />
-                  <ButtonDialogo click={this.descriptografia} name='D' />
+                  <InputDialogue text={this.state.password_decrypted} receive={this.password_decryption} name='chave' />
+                  <ButtonDialogue click={this.decryption} name='D' />
                 </KeyboardAvoidingView>) : null}
             </View>)}
         </ScrollView>
         {this.state.show ?
           (<KeyboardAvoidingView style={Styles.inputs} behavior="padding" enabled>
             <View>
-              <Input texto={this.state.texto_normal} chamar={this.entrada_texto} name='texto' />
-              <Input texto={this.state.chave} chamar={this.entrada_chave} name='chave' />
+              <Input text={this.state.text_normal} receive={this.text_input} name='texto' />
+              <Input text={this.state.password} receive={this.password_input} name='chave' />
             </View>
-            <Button name="C" click={this.criptografia} />
+            <Button name="C" click={this.cryptography} />
           </KeyboardAvoidingView>) : null}
       </React.Fragment>
     );

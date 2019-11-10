@@ -1,9 +1,9 @@
 import React from 'react'
-import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { TouchableOpacity, StyleSheet } from 'react-native'
 import {Icon} from 'react-native-elements'
 
 export default props =>
-    <TouchableOpacity onPress={props.click} style={styles.botao}>
+    <TouchableOpacity onPress={props.click} style={styles.button}>
       <Icon
         name='code'
         color='#fff'/>
@@ -11,7 +11,7 @@ export default props =>
 
 
 const styles = StyleSheet.create({
-    botao: {
+    button: {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#4a90e2',

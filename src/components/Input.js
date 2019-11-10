@@ -5,15 +5,15 @@ export default props =>
     <TextInput
         multiline
         placeholder={props.name}
-        value={props.texto}
-        onChangeText={props.chamar}
+        value={props.text}
+        onChangeText={props.receive}
         maxLength={128}
-        style={props.name === 'texto' ? styles.texto : styles.chave} />
+        style={props.name === 'texto' ? styles.text : styles.password} />
 
 
 
 const styles = StyleSheet.create({
-    texto: {
+    text: {
         backgroundColor: '#fff',
         width: 280,
         borderRadius: 25,
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         elevation: 7,
 
     },
-    chave: {
+    password: {
         backgroundColor: '#001f3f',
         width: 280,
         borderRadius: 25,

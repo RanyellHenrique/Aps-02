@@ -1,15 +1,18 @@
 import * as React from 'react'
-import { Text, View, StyleSheet, KeyboardAvoidingView, ProgressBarAndroid, Alert } from 'react-native'
+import { Text, View, StyleSheet, KeyboardAvoidingView, Alert } from 'react-native'
 import CryptoJS from "react-native-crypto-js"
 import { ScrollView } from 'react-native-gesture-handler'
+
+import  Styles from '../styles/Styles'
 
 import Header from '../components/Header'
 import Button from '../components/Button'
 import Input from '../components/Input'
-import ButtonDialogo from '../components/ButtonDialogo'
-import InputDialogo from '../components/InputDialogo'
-import Dialogue from '../components/Dialogo'
+import ButtonDialogo from '../components/ButtonDialogue'
+import InputDialogo from '../components/InputDialogue'
+import Dialogue from '../components/Dialogue'
 import Progress from '../components/Progress'
+
 
 
 export default class AssetExample extends React.Component {
@@ -87,7 +90,7 @@ export default class AssetExample extends React.Component {
       <React.Fragment>
         <Header name="Criptografia AES" />
         <Progress value={this.state.progress} />
-        <ScrollView style={styles.scroll}>
+        <ScrollView style={Styles.scroll}>
           {this.state.list.map((item, key) =>
             <View key={key}>
               <Dialogue
@@ -95,14 +98,14 @@ export default class AssetExample extends React.Component {
                 choose={item.show}
                 chamar={this.acionar_chave.bind(this, item, key)} />
               {item.show ? (
-                <KeyboardAvoidingView style={styles.bottonInput} behavior="padding" enabled>
+                <KeyboardAvoidingView style={Styles.bottonInput} behavior="padding" enabled>
                   <InputDialogo chamar={this.chave_descriptografia} name='chave' />
                   <ButtonDialogo click={this.descriptografia} name='D' />
                 </KeyboardAvoidingView>) : null}
             </View>)}
         </ScrollView>
         {this.state.show ?
-          (<KeyboardAvoidingView style={styles.inputs} behavior="padding" enabled>
+          (<KeyboardAvoidingView style={Styles.inputs} behavior="padding" enabled>
             <View>
               <Input texto={this.state.texto_normal} chamar={this.entrada_texto} name='texto' />
               <Input texto={this.state.chave} chamar={this.entrada_chave} name='chave' />
@@ -113,38 +116,4 @@ export default class AssetExample extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  scroll: {
-    flex: 3,
-    backgroundColor: '#e0e0e0',
-  },
-  inputs: {
-    flex: .27,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    backgroundColor: '#e0e0e0'
-  },
-  texto: {
-    backgroundColor: '#fff',
-    margin: 7,
-    borderRadius: 25,
-  },
-  dialog: {
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    marginRight: 45,
-    padding: 5,
-    margin: 5,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3, },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7,
-  },
-  bottonInput: {
-    flexDirection: 'row',
-    marginLeft: 5
-  }
-});
 

@@ -3,14 +3,14 @@ import { Text, StyleSheet } from 'react-native'
 
 export default props =>
     <Text
-        style={props.choose ? styles.dialog_choose : styles.dialog}
+        style={props.choose ? styles.dialogue_choose : styles.dialogue}
         onPress={props.chamar}>
         {props.value}
     </Text>
 
 
 const styles = StyleSheet.create({
-    dialog: {
+    dialogue: {
         backgroundColor: '#fff',
         borderRadius: 5,
         marginRight: 45,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 7,
     },
-    dialog_choose: {
+    dialogue_choose: {
         backgroundColor: '#001f3f',
         color: '#fff',
         borderRadius: 5,
