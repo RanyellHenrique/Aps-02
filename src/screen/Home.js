@@ -7,14 +7,14 @@ import Header from '../components/Header'
 export default class AssetExample extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Header name="Home"/>
+      <React.Fragment >
+        <Header title="Home" subTitle="Definição"/>
         <Card style={styles.card}>
         <Text >
           Local files and assets can be imported by dragging and dropping them into the editor
         </Text>
         </Card>
-      </View>
+      </React.Fragment>
     );
   }
 }

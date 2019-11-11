@@ -7,5 +7,5 @@ export default props =>
         indeterminate={false}
         progress={props.value}
         color='#4a90e2'
-        backgroundColor='#e0e0e0'
+        backgroundColor='#f0f0f0'
     />

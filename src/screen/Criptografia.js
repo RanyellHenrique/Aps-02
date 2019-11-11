@@ -92,7 +92,7 @@ export default class AssetExample extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header name="Criptografia AES" />
+        <Header title="Cryptography" subTitle="AES" />
         <Progress value={this.state.progress} />
         <ScrollView style={Styles.scroll}>
           {this.state.list.map((item, key) =>

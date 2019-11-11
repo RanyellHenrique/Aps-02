@@ -1,13 +1,14 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import {Icon} from 'react-native-elements'
+import {LinearGradient} from 'expo-linear-gradient'
 
 export default () => {
     return (
-        <View style={styles.container}>
+        <LinearGradient style={styles.container} colors={['#000', '#12C0F0']} locations={[0.3, 1.0]}>
             <Icon name='adb' color='#fff' size={90}/>
             <Text style={styles.text}>Criptografia AES</Text>
-        </View>
+        </LinearGradient>
     )
 }
 
@@ -15,7 +16,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#001f3f',
         justifyContent:'center',
         paddingVertical: 15,
     },
