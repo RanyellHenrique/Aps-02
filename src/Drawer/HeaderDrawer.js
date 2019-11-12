@@ -3,9 +3,11 @@ import { View, StyleSheet, Text } from 'react-native'
 import {Icon} from 'react-native-elements'
 import {LinearGradient} from 'expo-linear-gradient'
 
+//Customização do cabeçalho componente de navegação 'Drawer'
+
 export default () => {
     return (
-        <LinearGradient style={styles.container} colors={['#000', '#12C0F0']} locations={[0.3, 1.0]}>
+        <LinearGradient style={styles.container} colors={["#193F76", "#1DBAE5"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
             <Icon name='adb' color='#fff' size={90}/>
             <Text style={styles.text}>Criptografia AES</Text>
         </LinearGradient>

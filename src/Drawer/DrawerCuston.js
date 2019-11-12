@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { NavigationActions } from 'react-navigation'
-import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { Icon } from 'react-native-elements'
 
 import Header from './HeaderDrawer'
+
+//Customização do  componente de navegação 'Drawer'
 
 class SideMenu extends Component {
   constructor(props) {

@@ -1,11 +1,12 @@
 import React from 'react'
-import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { TouchableOpacity, StyleSheet } from 'react-native'
+import {Icon} from 'react-native-elements'
+
+//Criação do componente botão
 
 export default props =>
     <TouchableOpacity onPress={props.click} style={styles.button}>
-        <Text style={styles.texto}>
-            {props.name}
-        </Text>
+        <Icon name='code' color='#fff'/>
     </TouchableOpacity>
 
 const styles = StyleSheet.create({

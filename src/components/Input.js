@@ -1,6 +1,8 @@
 import React from 'react'
 import { TextInput, StyleSheet } from 'react-native'
 
+//Criação do componente de entrada de texto
+
 export default props =>
     <TextInput
         multiline

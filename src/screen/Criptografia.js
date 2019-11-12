@@ -3,7 +3,7 @@ import { View, KeyboardAvoidingView, Alert } from 'react-native'
 import CryptoJS from "react-native-crypto-js"
 import { ScrollView } from 'react-native-gesture-handler'
 
-import Styles from '../styles/Styles'
+import Styles from './styles/Styles'
 import Header from '../components/Header'
 import Button from '../components/Button'
 import Input from '../components/Input'
@@ -27,7 +27,7 @@ export default class AssetExample extends React.Component {
     }
   }
 
-  cryptography = () => {
+  cryptography = () => { // função é chamada para criptografar o texto
     if (this.state.text_normal === '' || this.state.password === '') {
       Alert.alert('Digite o texto e a chave!!')
     } else {
@@ -37,7 +37,7 @@ export default class AssetExample extends React.Component {
     }
   }
 
-  decryption = () => {
+  decryption = () => { // função é chamada para descriptografar o texto
     if (this.state.password_decrypted !== '') {
       let texts = this.state.list
       let bytes = CryptoJS.AES.decrypt(this.state.text_decrypted, this.state.password_decrypted)
@@ -45,7 +45,7 @@ export default class AssetExample extends React.Component {
       if (originalText !== '') {
         texts[this.state.index].text = originalText
         texts[this.state.index].show = false
-        this.setState({ list: texts, password_decrypted: '' })
+        this.setState({ list: texts, password_decrypted: '', show: true })
       } else {
         Alert.alert('Chave Errada!!')
       }
@@ -54,21 +54,21 @@ export default class AssetExample extends React.Component {
     }
   }
 
-  text_input = text => {
+  text_input = text => { // função é chamada para obter o valor do texto digitado 
     let value = text.length / 128
     this.setState({ text_normal: text, progress: value })
 
   }
 
-  password_input = text => {
+  password_input = text => { // função é chamada para obter o valor da chave digitada no periodo criptografia
     this.setState({ password: text })
   }
 
-  password_decryption = text => {
+  password_decryption = text => { // função é chamada para obter o valor da chave digitada no periodo descriptografia
     this.setState({ password_decrypted: text })
   }
 
-  password_activation = (text, key) => {
+  password_activation = (text, key) => { // função é chamada para verificar se a chave e o texto estão corretos
     let texts = this.state.list
     this.setState({ text_decrypted: text.text, index: key })
     if (text.show == true) {
@@ -89,13 +89,13 @@ export default class AssetExample extends React.Component {
 
 
 
-  render() {
+  render() { // função que renderiza os componentes criados
     return (
       <React.Fragment>
-        <Header title="Cryptography" subTitle="AES" />
+        <Header title="Criptografia" subTitle="AES" />
         <Progress value={this.state.progress} />
         <ScrollView style={Styles.scroll}>
-          {this.state.list.map((item, key) =>
+          {this.state.list.map((item, key) => //função que renderiza os textos digitados
             <View key={key}>
               <Dialogue
                 value={item.text}

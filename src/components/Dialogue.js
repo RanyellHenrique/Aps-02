@@ -1,6 +1,8 @@
 import React from 'react'
 import { Text, StyleSheet } from 'react-native'
 
+//Criação do componente de dialogo
+
 export default props =>
     <Text
         style={props.choose ? styles.dialogue_choose : styles.dialogue}
@@ -29,7 +31,6 @@ const styles = StyleSheet.create({
         marginRight: 45,
         padding: 5,
         margin: 5,
-        shadowColor: "#000",
         shadowColor: "#000",
         shadowOffset: {width: 0, height: 12},
         shadowOpacity: 0.58,
