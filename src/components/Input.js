@@ -9,7 +9,7 @@ export default props =>
         placeholder={props.name}
         value={props.text}
         onChangeText={props.receive}
-        maxLength={128}
+        maxLength={128} // limita o texto em 128 caracteres
         style={props.name === 'texto' ? styles.text : styles.password} />
 
 

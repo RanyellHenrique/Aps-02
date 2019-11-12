@@ -13,7 +13,7 @@ export default class AssetExample extends React.Component {
         <Card style={Styles.card}>
           <Text style={Styles.title}> Criptografia AES </Text>
           <Divider style={{ backgroundColor: 'gray' }} />
-          <Text>
+          <Text style={Styles.text}>
             O Advanced Encryption Standard ou AES também é chamado de Rijndael cipher (meu favorito).
             AES suporta criptografia de 128, 192 e 256 bits, que pode ser determinada pelo tamanho da
             chave, o tamanho da chave de criptografia de 128 bits é de 16 bytes, a chave de criptografia

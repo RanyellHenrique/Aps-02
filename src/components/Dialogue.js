@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.29,
         shadowRadius: 4.65,
         elevation: 7,
+        fontSize: 19,
     },
     dialogue_choose: {
         backgroundColor: '#001f3f',
@@ -36,5 +37,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
         elevation: 24,
+        fontSize: 19,
     },
 })

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-//Estilo dos componentes da paginas 
+//Estilo dos componentes das paginas 
 
  export default Styles = StyleSheet.create({
     scroll: {
@@ -19,7 +19,7 @@ import {StyleSheet} from 'react-native'
         marginLeft: 5
       },
       title: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold'
       },
       card: {
@@ -30,4 +30,7 @@ import {StyleSheet} from 'react-native'
         textAlign: 'center',
         justifyContent: 'center',
       },
+      text:{
+        fontSize: 17
+      }
 })
